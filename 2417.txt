@@ -1,0 +1,22 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int Cv,Ce,Cs,Fv,Fe,Fs;
+    scanf("%d %d %d %d %d %d",&Cv,&Ce,&Cs,&Fv,&Fe,&Fs);
+    int Ccal=(Cv*3)+Ce,Fcal=(Fv*3)+Fe;
+    if(Ccal>Fcal){
+        printf("C\n");
+    }else if(Fcal>Ccal){
+        printf("F\n");
+    }else{
+        if(Fs>Cs){
+            printf("F\n"); 
+        }else if(Fs<Cs){
+            printf("C\n");
+        }else{
+            printf("=\n");
+        }
+    }
+    return 0;
+}

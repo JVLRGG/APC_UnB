@@ -1,0 +1,25 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int n,c,m;
+    scanf("%d %d %d",&n,&c,&m);
+    int vet_C[c],vet_M[m];
+    for(int i=0;i<c;i++){
+        scanf("%d",&vet_C[i]);
+    }
+    for(int i=0;i<m;i++){
+        scanf("%d",&vet_M[i]);
+    }
+    int quant=c;
+    for(int i=0;i<c;i++){
+        for(int j=0;j<m;j++){
+            if(vet_C[i]==vet_M[j]){
+                quant-=1;
+                break;
+            }
+        }
+    }
+    printf("%d\n",quant);
+    return 0;
+}

@@ -1,0 +1,25 @@
+#include <stdio.h>
+#define SIZE 501  // Corrigido para 501x501
+
+void location_rai(int mat[SIZE][SIZE], int n) {
+    int X, Y,aux=0;
+    for (int i = 0; i < n; i++) {
+        scanf("%d %d", &X, &Y);
+        if (mat[X][Y] != 0) {  // Se já existe um raio neste quadrante, imprime "1" e encerra
+            aux=1;
+        }
+        mat[X][Y] = 1;  // Marca o quadrante como atingido
+    }
+    if(aux==1){
+        printf("1\n");
+    }else{
+        printf("0\n");
+    }
+}
+
+int main() {
+    int n, mat[SIZE][SIZE] = {0};  // Inicializa toda a matriz com 0
+    scanf("%d", &n);
+    location_rai(mat, n);
+    return 0;
+}

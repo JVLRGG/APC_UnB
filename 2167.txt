@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int N,indice=0;
+    scanf("%d",&N);
+    int vet[N];
+    for(int i=0;i<N;i++){
+        scanf("%d",&vet[i]);
+        if(i!=0){
+            if(vet[i-1]>vet[i]){
+                indice=i+1;
+                break;
+            }
+        }
+    }
+    printf("%d\n",indice);
+    return 0;
+}

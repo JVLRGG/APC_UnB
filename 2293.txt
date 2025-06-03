@@ -1,0 +1,44 @@
+#include <stdio.h>
+#define ben 100
+void preenchimento(int N,int M,int mat[ben][ben]){
+    for(int i=0;i<N;i++){
+        for(int j=0;j<M;j++){
+            scanf("%d",&mat[i][j]);
+        }
+    }
+}
+int calculo(int N,int M,int mat[ben][ben]){
+    
+    int valor_maior=-1;
+    for(int i=0;i<M;i++){
+        int soma_coluna=0;
+        for(int j=0;j<N;j++){
+            soma_coluna+=mat[j][i];    
+        }
+        if(valor_maior<soma_coluna){
+            valor_maior=soma_coluna;
+        }
+    }
+    int valor_maior2=-1;
+    for(int i=0;i<N;i++){
+        int soma_linha=0;
+        for(int j=0;j<M;j++){
+            soma_linha+=mat[i][j];
+        }
+        if(valor_maior2<soma_linha){
+            valor_maior2=soma_linha;
+        }
+    }
+    if(valor_maior2>valor_maior){
+        return valor_maior2;
+    }else{
+        return valor_maior;
+    }
+}
+int main(){
+    int N,M,mat[ben][ben];
+    scanf("%d %d",&N,&M);
+    preenchimento(N,M,mat);
+    int maior = calculo(N,M,mat);
+    printf("%d\n",maior);
+}

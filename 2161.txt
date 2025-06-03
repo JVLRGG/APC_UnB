@@ -1,0 +1,18 @@
+#include<stdio.h>
+
+double fracao_continua(int n){   
+    if(n == 0){
+        return 0.0;
+    }
+    
+    return 1.0 / (6.0 + fracao_continua(n-1));;
+}
+
+int main(){
+    int n;
+    scanf("%d",&n);
+    double raiz = 3.0+fracao_continua(n);
+    printf("%.10lf\n",raiz);
+
+    return 0;
+}

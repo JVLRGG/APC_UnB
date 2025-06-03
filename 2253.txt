@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#define MAX 33
+
+char senha[MAX];
+
+int validacao(const char*senha){
+    int min=0,mai=0,num=0;
+    if(strlen(senha)<6 || strlen(senha)>32){ // pergunta se a senha tem tamanho menor q 6 ou se e maior q 32
+        return 0;    
+    }
+    for(int i=0;senha[i]!='\0';i++){
+        if (!isalnum(senha[i])) {// Senha inválida devido a caractere especial ou espaço
+            return 0;
+        }if(islower(senha[i])){//pergunta se a senha tem alguma letra minuscula
+            min=1;        
+        }if(isupper(senha[i])){//pergunta se a senha tem alguma letra maiuscula
+            mai=1;
+        }if(isdigit(senha[i])){//pergunta se a senha tem algum valor inteiro
+            num=1;
+        }
+    }
+    if(min && mai && num){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+int main() {
+    while(scanf("%[^\n]",senha)!=EOF){
+        getchar();
+        if (validacao(senha)) {
+            printf("Senha valida.\n");
+        } else {
+            printf("Senha invalida.\n");
+        }
+    }
+
+    return 0;
+}

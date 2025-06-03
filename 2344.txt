@@ -1,0 +1,19 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int X;
+    scanf("%d",&X);
+    if(X==0){
+        printf("E\n");
+    }else if(X>=1 && X<=35){
+        printf("D\n");
+    }else if(X>=36 && X<=60){
+        printf("C\n");
+    }else if(X>=61 && X<=85){
+        printf("B\n");
+    }else if(X>=86 && X<=100){
+        printf("A\n");
+    }
+    return 0;
+}

@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#define MAX 100001
+#define MEX 26
+void permutacao(char alfabeto[],char mensagem_criptografada[]){
+    char alfabeto_certo[MEX],mensagem_descriptografada[MAX];
+    int tamanho=strlen(mensagem_criptografada);
+    //preenchimento do alfabeto;
+    for(int i=0;i<MEX;i++){
+        alfabeto_certo[alfabeto[i]-'a']='a'+i;
+    }
+    //descriptografia
+    for(int i=0;i<tamanho;i++){
+        mensagem_descriptografada[i]=alfabeto_certo[mensagem_criptografada[i]-'a'];
+    }
+    mensagem_descriptografada[tamanho]='\0';
+    printf("%s\n",mensagem_descriptografada);
+}
+int main(){
+     char alfabeto[MEX],mensagem_criptografada[MAX];
+     scanf("%s",alfabeto);
+     scanf("%s",mensagem_criptografada);
+     permutacao(alfabeto,mensagem_criptografada);
+}

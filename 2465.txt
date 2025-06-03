@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdbool.h>
+#define tam 100
+
+// Direções: Norte (0), Leste (1), Sul (2), Oeste (3)
+int dx[] = {-1, 0, 1, 0};
+int dy[] = {0, 1, 0, -1};
+
+int N; //tamnho da matriz
+int matriz[tam][tam];//matriz para representar os alunos
+bool bandeiras[tam][tam];//matriz de bandeiras levantadas
+
+void processo(int x,int y){
+    if(bandeiras[x][y])return;
+    bandeiras[x][y]=true;
+    for (int d = 0; d < 4; d++) { // Gira 4 vezes.
+        int nx = x + dx[d];
+        int ny = y + dy[d];
+        
+        // Verifica se a nova posição é válida.
+        if (nx >= 0 && nx < N && ny >= 0 && ny < N) {
+            // Verifica as condições para passar a bolinha.
+            if (!bandeiras[nx][ny] && matriz[nx][ny] >= matriz[x][y]) {
+                processo(nx, ny); // Passa a bolinha.
+            }
+        }
+    }
+
+}
+int main() {
+    int I,J;//position ball
+    scanf("%d %d %d",&N,&I,&J);
+    I--;J--;
+    for(int i=0;i<N;i++){
+        for(int j=0;j<N;j++){
+            scanf("%d",&matriz[i][j]);
+            bandeiras[i][j]=false; //inicializa as posições das bandeiras como não lenvatado
+        }
+    }
+    processo(I,J);
+    int contador=0; //numero de bandeiras levantadas
+    for(int i=0;i<N;i++){
+        for(int j=0;j<N;j++){
+            if(bandeiras[i][j]){
+                contador++;
+            }      
+        }
+    }
+    printf("%d\n",contador);
+    return 0;
+}

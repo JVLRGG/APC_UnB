@@ -1,0 +1,19 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    double O,B,I;
+    scanf("%lf %lf %lf",&O,&B,&I);
+    if(O==B||O==I||I==B){
+        printf("Empate\n");
+    }else{
+        if(O<B && O<I){
+            printf("Otavio\n");
+        }else if(B<O && B<I){
+            printf("Bruno\n");
+        }else{
+            printf("Ian\n");
+        }
+    }
+    return 0;
+}

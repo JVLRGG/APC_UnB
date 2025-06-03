@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <string.h>
+#define MAX 101
+void validacaoderesistencia(char D[MAX],char S[MAX]){
+    
+    if(strstr(D,S)){ // pergunta se S é uma substring de D
+        printf("Resistente\n");
+    }else{
+        printf("Nao resistente\n");
+    }
+}
+int main() {
+    char D[MAX],S[MAX];
+    while(scanf("%s",D)!=EOF){
+        getchar();
+        scanf("%s",S);getchar();
+        validacaoderesistencia(D,S);
+    }
+    return 0;
+}

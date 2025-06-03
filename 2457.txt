@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <string.h>
+#define MAX 1001
+
+// Função que conta a quantidade de palavras em uma frase
+int contar_palavras(char frase[MAX]) {
+    int quant_palavras = 0, dentro_palavra = 0;
+
+    for (int i = 0; frase[i] != '\0'; i++) {
+        if (frase[i] != ' ') { // Caracter não é espaço, então estamos dentro de uma palavra
+            if (!dentro_palavra) { 
+                quant_palavras++; 
+                dentro_palavra = 1;
+            }
+        } else {
+            dentro_palavra = 0; // Encontrou espaço, então a palavra terminou
+        }
+    }
+
+    return quant_palavras;
+}
+
+// Função que calcula a porcentagem de palavras que contêm a letra desejada
+void calcular_porcentagem(char frase[MAX], int quant_palavras, char letra) {
+    int palavras_com_letra = 0, dentro_palavra = 0, tem_letra = 0;
+
+    for (int i = 0; frase[i] != '\0'; i++) {
+        if (frase[i] != ' ') { // Se for uma letra (não um espaço)
+            if (!dentro_palavra) {
+                dentro_palavra = 1;
+                tem_letra = 0;
+            }
+            if (frase[i] == letra) {
+                tem_letra = 1;
+            }
+        } else { // Se encontrou um espaço, finaliza a palavra
+            if (dentro_palavra && tem_letra) {
+                palavras_com_letra++;
+            }
+            dentro_palavra = 0;
+        }
+    }
+
+    // Verificar a última palavra
+    if (dentro_palavra && tem_letra) {
+        palavras_com_letra++;
+    }
+
+    // Imprimir a porcentagem com uma casa decimal
+    printf("%.1lf\n", ((double)palavras_com_letra * 100.0) / quant_palavras);
+}
+
+int main() {
+    char frase[MAX];
+    char letra;
+
+    // Leitura da letra
+    scanf(" %c", &letra);
+    getchar(); // Remove a quebra de linha do buffer
+
+    // Leitura da frase inteira
+    fgets(frase, MAX, stdin);
+    frase[strcspn(frase, "\n")] = '\0'; // Remove o '\n' do final da string
+
+    // Contar palavras e calcular a porcentagem
+    int quant_palavras = contar_palavras(frase);
+    calcular_porcentagem(frase, quant_palavras, letra);
+
+    return 0;
+}
