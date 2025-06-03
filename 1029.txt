@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+// Variável global para contar o número de chamadas recursivas
+int num_calls = 0;
+
+// Função recursiva para calcular o número de Fibonacci
+int fib(int n) {
+    num_calls++; // Incrementa o contador de chamadas
+    if (n == 0) {
+        return 0;
+    } else if (n == 1) {
+        return 1;
+    } else {
+        return fib(n - 1) + fib(n - 2);
+    }
+}
+
+int main() {
+    int N;
+    scanf("%d", &N); // Lê o número de casos de teste
+
+    for (int i = 0; i < N; i++) {
+        int X;
+        scanf("%d", &X); // Lê o valor de X para o caso de teste atual
+
+        // Reinicia o contador de chamadas para cada caso de teste
+        num_calls = 0;
+
+        // Calcula o número de Fibonacci para X
+        int result = fib(X);
+
+        // Imprime o resultado no formato especificado
+        printf("fib(%d) = %d calls = %d\n", X, num_calls - 1, result);
+    }
+
+    return 0;
+}

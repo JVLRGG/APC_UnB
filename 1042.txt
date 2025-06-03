@@ -1,0 +1,37 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int x,y,z,menor,maior,meio;
+    scanf("%d %d %d",&x,&y,&z);
+    if(x>=y && x>=z){
+        maior=x;
+        if(y>=z){
+            menor=z;
+            meio=y;
+        }else{
+            menor=y;
+            meio=z;
+        }
+    }else if(y>=x && y>=z){
+        maior=y;
+        if(x>=z){
+            menor=z;
+            meio=x;
+        }else{
+            menor=x;
+            meio=z;
+        }
+    }else if(z>=x && z>=y){
+        maior=z;
+        if(x>=y){
+            menor=y;
+            meio=x;
+        }else{
+            menor=x;
+            meio=y;
+        }
+    }
+    printf("%d\n%d\n%d\n\n%d\n%d\n%d\n",menor,meio,maior,x,y,z);
+    return 0;
+}

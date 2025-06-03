@@ -1,0 +1,21 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int X,Y;
+    double valor;
+    scanf("%d%d",&X,&Y);
+    if(X==1){
+        valor=4.00*Y;
+    }else if(X==2){
+        valor=4.50*Y;
+    }else if(X==3){
+        valor=5.00*Y;
+    }else if(X==4){
+        valor=2.00*Y;
+    }else if(X==5){
+        valor=1.50*Y;
+    }
+    printf("Total: R$ %.2lf\n",valor);
+    return 0;
+}
