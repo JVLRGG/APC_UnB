@@ -1,0 +1,35 @@
+#include <stdio.h>
+ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int queen_moves(int x1, int y1, int x2, int y2) {
+    // Se a posição inicial é igual à posição final, não há movimento necessário
+    if (x1 == x2 && y1 == y2) {
+        return 0;
+    }
+
+    // A rainha pode alcançar a posição em um movimento se:
+    // - Estiver na mesma linha (x1 == x2)
+    // - Estiver na mesma coluna (y1 == y2)
+    // - Estiver na mesma diagonal (|x1 - x2| == |y1 - y2|)
+    if (x1 == x2 || y1 == y2 || abs(x1 - x2) == abs(y1 - y2)) {
+        return 1;
+    }
+
+    // Caso contrário, a rainha sempre pode alcançar em dois movimentos
+    return 2;
+}
+
+int main() {
+    int x1, y1, x2, y2;
+    do{
+        scanf("%d %d %d %d",&x1,&y1,&x2,&y2);
+        if(x1!=0){
+            printf("%d\n",queen_moves(x1,y1,x2,y2));
+        }
+    }while(x1!=0);
+
+    return 0;
+}

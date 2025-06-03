@@ -1,0 +1,25 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int n,number,Total=0,TotalCu=0,TotalRat=0,TotalSap=0;
+    char letra;
+    scanf("%d",&n);
+    for (int i = 1; i <=n; i++){
+        scanf("%d %c",&number,&letra);
+        Total+=number;
+        if(letra=='C'){
+            TotalCu+=number;
+        }else if(letra=='R'){
+            TotalRat+=number;
+        }else{
+            TotalSap+=number;
+        }
+    }
+    printf("Total: %d cobaias\nTotal de coelhos: %d\n",Total,TotalCu);
+    printf("Total de ratos: %d\nTotal de sapos: %d\n",TotalRat,TotalSap);
+    printf("Percentual de coelhos: %.2lf %%\n",(TotalCu*100)/(double)Total);
+    printf("Percentual de ratos: %.2lf %%\n",(TotalRat*100)/(double)Total);
+    printf("Percentual de sapos: %.2lf %%\n",(TotalSap*100)/(double)Total);
+    return 0;
+}

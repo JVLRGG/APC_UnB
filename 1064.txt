@@ -1,0 +1,15 @@
+#include <stdio.h>
+ 
+int main() {
+    double n,somaposi=0;
+    int positivos=0;
+    for(int i=1;i<=6;i++){
+        scanf("%lf",&n);
+        if(n>=0){
+            positivos++;
+            somaposi+=n;
+        }
+    }
+    printf("%d valores positivos\n%.1lf\n",positivos,somaposi/(double) positivos);
+    return 0;
+}

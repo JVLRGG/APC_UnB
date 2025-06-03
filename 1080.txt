@@ -1,0 +1,18 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int x,posi,maior;
+    for(int i=1;i<=100;i++){
+        scanf("%d",x);
+        if(i==1){
+            maior=x;
+            posi=i;
+        }else if(x>maior){
+            maior=x;
+            posi=i;
+        }
+    }
+    printf("%d\n%d\n",maior,posi);
+    return 0;
+}
