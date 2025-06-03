@@ -1,0 +1,18 @@
+#include <stdio.h>
+ 
+int main() {
+    int fal=0;
+    for(int i=1;i<=8;i++){
+        int n;
+        scanf("%d",&n);
+        if(n<0||n>1){
+            fal=1;
+        }
+    }
+    if(fal==1){
+        printf("F\n");
+    }else{
+        printf("S\n");
+    }
+    return 0;
+}

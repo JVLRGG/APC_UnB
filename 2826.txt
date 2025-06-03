@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#define MAX 21
+void ordenacao(char str1[MAX],char str2[MAX]){
+    int tam_str1=strlen(str1),tam_str2=strlen(str2);
+    int iguais=0;
+    for(int i=0;str1[i]!='\0' && str2[i]!='\0';i++){
+        char aux[21];
+        if(str1[i]>str2[i]){
+            strcpy(aux,str2);
+            strcpy(str2,str1);
+            strcpy(str1,aux);
+            break;  
+        }else if(str1[i]!=str2[i]){
+           
+            break;
+        }else
+            iguais=1;        
+    }char aux[21];
+    if(tam_str1>tam_str2 && iguais==1){
+        strcpy(aux,str2);
+        strcpy(str2,str1);
+        strcpy(str1,aux);
+    }
+        
+}
+int main(){
+    char str1[MAX],str2[MAX];
+    scanf("%s",str1);getchar();
+    scanf("%s",str2);getchar();
+    ordenacao(str1,str2);
+    printf("%s\n%s\n",str1,str2);
+    return 0;
+}

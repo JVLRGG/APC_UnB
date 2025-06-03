@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_ITENS 1000
+#define MAX_TAM 21
+
+void ordenar_lista(char lista[][MAX_TAM], int n) {
+    char temp[MAX_TAM];
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (strcmp(lista[i], lista[j]) > 0) { // Ordem alfabética
+                strcpy(temp, lista[i]);
+                strcpy(lista[i], lista[j]);
+                strcpy(lista[j], temp);
+            }
+        }
+    }
+}
+
+int remover_duplicatas(char lista[][MAX_TAM], int n) {
+    char lista_limpa[MAX_ITENS][MAX_TAM];
+    int novo_tamanho = 0;
+
+    for (int i = 0; i < n; i++) {
+        int duplicado = 0;
+        for (int j = 0; j < novo_tamanho; j++) {
+            if (strcmp(lista[i], lista_limpa[j]) == 0) {
+                duplicado = 1;
+                break;
+            }
+        }
+        if (!duplicado) {
+            strcpy(lista_limpa[novo_tamanho], lista[i]);
+            novo_tamanho++;
+        }
+    }
+
+    // Copia a lista sem duplicatas de volta
+    for (int i = 0; i < novo_tamanho; i++) {
+        strcpy(lista[i], lista_limpa[i]);
+    }
+
+    return novo_tamanho;
+}
+
+int main() {
+    int N;
+    scanf("%d", &N); // Número de listas
+
+    getchar(); // Consumir o '\n' após o número
+
+    for (int caso = 0; caso < N; caso++) {
+        char lista[MAX_ITENS][MAX_TAM];
+        char linha[10000]; // Para armazenar a linha completa
+        int num_itens = 0;
+
+        fgets(linha, sizeof(linha), stdin); // Lê a linha completa
+        linha[strcspn(linha, "\n")] = 0; // Remove o '\n' do final
+
+        char *token = strtok(linha, " "); // Quebra a string por espaços
+        while (token != NULL) {
+            strcpy(lista[num_itens], token);
+            num_itens++;
+            token = strtok(NULL, " ");
+        }
+
+        num_itens = remover_duplicatas(lista, num_itens);
+        ordenar_lista(lista, num_itens);
+
+        for (int i = 0; i < num_itens; i++) {
+            if (i > 0) printf(" ");
+            printf("%s", lista[i]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}

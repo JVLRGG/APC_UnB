@@ -1,0 +1,13 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int g,w,h;
+    scanf("%d %d %d",&g,&w,&h);
+    if(g>(w*h)){
+        printf("%d %d\n",(w*h),g-(w*h));
+    }else{
+        printf("%d 0\n",g);
+    }
+    return 0;
+}

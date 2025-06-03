@@ -1,0 +1,189 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int x,y;
+    char a,b;
+    scanf("%c %d %c %d",&a,&x,&b,&y);
+    if(a=='a'){
+        if(b=='b'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='c'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else{printf("INVALIDO\n");}
+    }
+    if(a=='b'){
+        if(b=='c'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='d'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='a'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else{printf("INVALIDO\n");}
+    }
+    if(a=='c'){
+        if(b=='d'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='e'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='b'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='a'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else{printf("INVALIDO\n");}
+    }
+    if(a=='d'){
+        if(b=='e'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='f'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='c'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='b'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else{printf("INVALIDO\n");}
+    }
+    if(a=='e'){
+        if(b=='f'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='g'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='d'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='c'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else{printf("INVALIDO\n");}
+    }
+    if(a=='f'){
+        if(b=='g'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='h'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='e'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='d'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else{printf("INVALIDO\n");}
+    }
+    if(a=='g'){
+        if(b=='f'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='e'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='h'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else{printf("INVALIDO\n");}
+    }
+    if(a=='h'){
+        if(b=='g'){
+            if(x==y+2 || x==y-2){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else if(b=='f'){
+            if(x==y-1 || x==y+1){
+                printf("VALIDO\n");
+            }else{
+                printf("INVALIDO\n");
+            }
+        }else{printf("INVALIDO\n");}
+    }
+    return 0;
+}

@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <string.h>
+#define MAX 1001
+int main() {
+ 
+    char str1[MAX],str2[MAX];
+    scanf("%s %s",str1,str2);
+    int x = strlen(str1), y = strlen(str2);
+    if(x>=y){
+        printf("go\n");
+    }else
+        printf("no\n");
+    return 0;
+}

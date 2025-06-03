@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int N, M; 
+    scanf("%d %d", &N, &M);
+
+    int natan[N], samuel[N];
+    int countNatan = 0, countSamuel = 0;
+
+    // Lendo os itens do prato de Natan
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &natan[i]);
+        if (natan[i] == 1) {
+            countNatan++;
+        }
+    }
+
+    // Lendo os itens do prato de Samuel
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &samuel[i]);
+        if (samuel[i] == 1) {
+            countSamuel++;
+        }
+    }
+
+    // Determinando o resultado
+    if (countNatan == M) {
+        printf("Tudo certo.\n");
+    } else if (countSamuel == M) {
+        printf("Pegou de Samuel.\n");
+    } else {
+        printf("Pegou de um estranho.\n");
+    }
+
+    return 0;
+}

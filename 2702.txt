@@ -1,0 +1,16 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int F,B,M,f,b,m,aux=0;
+    scanf("%d %d %d %d %d %d",&F,&B,&M,&f,&b,&m);
+    if(F<f){
+        aux+=(f-F);
+    }if(B<b){
+        aux+=(b-B);
+    }if(M<m){
+        aux+=(m-M);
+    }
+    printf("%d\n",aux);
+    return 0;
+}

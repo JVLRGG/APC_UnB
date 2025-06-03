@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+// Movimentos possíveis: cima, baixo, esquerda, direita
+int dx[4] = {-1, 1, 0, 0};
+int dy[4] = {0, 0, -1, 1};
+
+// Estrutura para representar uma célula da matriz na fila
+typedef struct {
+    int x, y, dist;
+} Node;
+
+// Fila para a BFS
+typedef struct {
+    Node queue[MAX * MAX];
+    int front, rear;
+} Queue;
+
+void initQueue(Queue *q) {
+    q->front = 0;
+    q->rear = 0;
+}
+
+void enqueue(Queue *q, int x, int y, int dist) {
+    q->queue[q->rear++] = (Node){x, y, dist};
+}
+
+Node dequeue(Queue *q) {
+    return q->queue[q->front++];
+}
+
+int isEmpty(Queue *q) {
+    return q->front == q->rear;
+}
+
+int bfs(int grid[MAX][MAX], int N, int M, int startX, int startY, int endX, int endY) {
+    Queue q;
+    initQueue(&q);
+    enqueue(&q, startX, startY, 0);
+    
+    int visited[MAX][MAX] = {0}; // Matriz para marcar os visitados
+    visited[startX][startY] = 1;
+    
+    while (!isEmpty(&q)) {
+        Node current = dequeue(&q);
+        
+        // Se chegou na posição do analógimôn, retorna a distância percorrida
+        if (current.x == endX && current.y == endY) {
+            return current.dist;
+        }
+        
+        // Tenta os 4 movimentos possíveis
+        for (int i = 0; i < 4; i++) {
+            int nx = current.x + dx[i];
+            int ny = current.y + dy[i];
+            
+            // Verifica se está dentro dos limites da matriz e se já foi visitado
+            if (nx >= 0 && nx < N && ny >= 0 && ny < M && !visited[nx][ny]) {
+                visited[nx][ny] = 1;
+                enqueue(&q, nx, ny, current.dist + 1);
+            }
+        }
+    }
+    
+    return -1; // Esse caso nunca ocorre, pois sempre há um caminho válido
+}
+
+int main() {
+    int N, M;
+    
+    while (scanf("%d %d", &N, &M) != EOF) {
+        int grid[MAX][MAX];
+        int startX, startY, endX, endY;
+        
+        // Lendo a matriz e localizando as posições do jogador e do analógimôn
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                scanf("%d", &grid[i][j]);
+                if (grid[i][j] == 1) {
+                    startX = i;
+                    startY = j;
+                } else if (grid[i][j] == 2) {
+                    endX = i;
+                    endY = j;
+                }
+            }
+        }
+        
+        // Chamando BFS para encontrar o menor caminho
+        printf("%d\n", bfs(grid, N, M, startX, startY, endX, endY));
+    }
+    
+    return 0;
+}

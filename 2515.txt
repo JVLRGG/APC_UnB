@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+int N;
+
+int menor_diferenca(int nivel[],int N){
+    long long soma_total = 0;
+    for(int i = 0; i < N; i++){
+        scanf("%d", &nivel[i]);        
+        soma_total += nivel[i];
+    }
+
+    long long soma_rangel = 0, soma_gugu;
+    long long diferenca;
+    
+    for(int i = 0; i < N; i++){
+        soma_rangel += nivel[i];
+        soma_gugu = llabs(soma_total - soma_rangel);
+        long long diff = llabs(soma_gugu - soma_rangel);
+
+        if(i == 0){
+            diferenca = diff;
+        } else if(diff < diferenca){
+            diferenca = diff;
+        }
+    }
+    return diferenca;
+}
+
+int main() {
+    while(scanf("%d", &N) != EOF){
+        int nivel[N];
+        long long resultado = menor_diferenca(nivel, N);
+        printf("%lld\n", resultado);
+    }
+    
+    return 0;
+}

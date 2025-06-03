@@ -1,0 +1,28 @@
+#include <stdio.h>
+int inseto(int X){
+    if(X>8000){
+        X=1;
+        return X;
+    }else{
+        X=0;
+        return X;
+    }
+} 
+int main() {
+ 
+    int C,N,i;
+    scanf("%d",&C);
+    int vet[C];
+    for(i=0;i<C;i++){
+        scanf("%d",&N);
+        vet[i]=inseto(N);
+    }
+    for(i=0;i<C;i++){
+        if(vet[i]==1){
+            printf("Mais de 8000!\n");
+        }else{
+            printf("Inseto!\n");
+        }
+    }
+    return 0;
+}

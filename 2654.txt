@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct personagens {
+    char nome[101];  // Ajustado para aceitar nomes de até 100 caracteres
+    int poder;
+    int kills;
+    int mortes;
+};
+
+typedef struct personagens PERSONA;
+
+void preenchimento(int n, PERSONA pessoa[]) {
+    for (int i = 0; i < n; i++) {
+        scanf("%s %d %d %d", pessoa[i].nome, &pessoa[i].poder, &pessoa[i].kills, &pessoa[i].mortes);
+    }
+}
+
+PERSONA novo_godofor(int n, PERSONA pessoa[]) {
+    PERSONA escolhido = pessoa[0]; // Assume o primeiro como candidato inicial
+
+    for (int i = 1; i < n; i++) {
+        if (pessoa[i].poder > escolhido.poder ||
+            (pessoa[i].poder == escolhido.poder && pessoa[i].kills > escolhido.kills) ||
+            (pessoa[i].poder == escolhido.poder && pessoa[i].kills == escolhido.kills && pessoa[i].mortes < escolhido.mortes) ||
+            (pessoa[i].poder == escolhido.poder && pessoa[i].kills == escolhido.kills && pessoa[i].mortes == escolhido.mortes && strcmp(pessoa[i].nome, escolhido.nome) < 0)) {
+            escolhido = pessoa[i];
+        }
+    }
+    
+    return escolhido;
+}
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    PERSONA *pessoa = (PERSONA *) malloc(sizeof(PERSONA) * N);
+    preenchimento(N, pessoa);
+
+    PERSONA godofor = novo_godofor(N, pessoa);
+    printf("%s\n", godofor.nome);
+
+    free(pessoa);
+    return 0;
+}

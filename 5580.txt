@@ -1,0 +1,19 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int v,a,f,p,aux=0;
+    scanf("%d %d %d %d",&v,&a,&f,&p);
+    if(v>=a){
+        v-=a;
+        aux++;
+    }if(v>=f){
+        v-=f;
+        aux++;
+    }if(v>=p){
+        v-=p;
+        aux++;
+    }
+    printf("%d\n",aux);
+    return 0;
+}

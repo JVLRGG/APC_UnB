@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+int main() {
+    int N;
+    char placa[101];
+
+    // Leitura do número de placas
+    scanf("%d", &N);
+
+    for (int i = 0; i < N; i++) {
+        // Leitura da placa
+        scanf("%s", placa);
+
+        // Verificação do formato da placa
+        int valida = 1;
+        if (strlen(placa) != 8) {
+            valida = 0;
+        } else {
+            for (int j = 0; j < 3; j++) {
+                if (!isupper(placa[j])) {
+                    valida = 0;
+                    break;
+                }
+            }
+            if (placa[3] != '-') {
+                valida = 0;
+            }
+            for (int j = 4; j < 8; j++) {
+                if (!isdigit(placa[j])) {
+                    valida = 0;
+                    break;
+                }
+            }
+        }
+
+        // Determinação do dia da semana ou FAILURE
+        if (valida) {
+            char ultimo_digito = placa[7];
+            switch (ultimo_digito) {
+                case '1':
+                case '2':
+                    printf("MONDAY\n");
+                    break;
+                case '3':
+                case '4':
+                    printf("TUESDAY\n");
+                    break;
+                case '5':
+                case '6':
+                    printf("WEDNESDAY\n");
+                    break;
+                case '7':
+                case '8':
+                    printf("THURSDAY\n");
+                    break;
+                case '9':
+                case '0':
+                    printf("FRIDAY\n");
+                    break;
+                default:
+                    printf("FAILURE\n");
+            }
+        } else {
+            printf("FAILURE\n");
+        }
+    }
+
+    return 0;
+}

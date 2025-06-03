@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int main() {
+    int n, m;
+    scanf("%d", &n); // Número total de figurinhas no álbum
+    scanf("%d", &m); // Número de figurinhas compradas
+
+    int vet[m];
+    bool presentes[n + 1]; // Vetor para verificar se uma figurinha já foi registrada
+    for (int i = 1; i <= n; i++) {
+        presentes[i] = false; // Inicializa todas como não registradas
+    }
+
+    // Lendo as figurinhas compradas
+    for (int i = 0; i < m; i++) {
+        scanf("%d", &vet[i]);
+        presentes[vet[i]] = true; // Marca a figurinha como registrada
+    }
+
+    // Contando figurinhas que faltam
+    int faltam = 0;
+    for (int i = 1; i <= n; i++) {
+        if (!presentes[i]) { // Se a figurinha não foi registrada
+            faltam++;
+        }
+    }
+
+    printf("%d\n", faltam); // Exibe o número de figurinhas que faltam
+
+    return 0;
+}

@@ -1,0 +1,13 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int a,b,m;
+    scanf("%d %d %d",&a,&b,&m);
+    if((a-b)%m==0){
+        printf("Sim\n%d\n",(a-b)/m);
+    }else{
+        printf("Nao\n");
+    }
+    return 0;
+}

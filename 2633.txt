@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+struct carnes{
+    int quantidade;
+    char nome_carne[51];
+};
+
+typedef struct carnes CArnes;
+
+void preenchimento(CArnes food[51],int n){
+    for(int i = 0; i < n; i++){
+        scanf("%s",food[i].nome_carne);
+        scanf("%d",&food[i].quantidade);
+        getchar();
+    }
+}
+void realocacao(CArnes food[51],int n){
+    for(int j=0;j<n;j++){    
+        for(int i = 0; i < n-1-j; i++){
+            if(food[i].quantidade>food[i+1].quantidade){
+                int aux = food[i].quantidade;
+                food[i].quantidade = food[i+1].quantidade;
+                food[i+1].quantidade = aux;
+                char aux2[51];
+                strcpy(aux2,food[i].nome_carne);
+                strcpy(food[i].nome_carne,food[i+1].nome_carne);
+                strcpy(food[i+1].nome_carne,aux2);
+            }
+        }
+    }    
+}
+void impressao(CArnes food[51],int n){
+    for(int i = 0; i < n; i++){
+        printf("%s",food[i].nome_carne);
+        if(i!=n-1)printf(" ");
+    }
+    printf("\n");
+} 
+int main(){
+    int n;
+    while(scanf("%d",&n)!=EOF){
+        CArnes *food; 
+        food = (CArnes *) malloc (sizeof(CArnes)*n);  
+        preenchimento(food,n);
+        realocacao(food,n);
+        impressao(food,n);
+        free(food);
+    }
+    
+}    
