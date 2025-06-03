@@ -1,0 +1,22 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int vet1[5],vet2[5],verifiq=0;
+    for(int i=0;i<5;i++){
+        scanf("%d",&vet1[i]);
+    }for(int i=0;i<5;i++){
+        scanf("%d",&vet2[i]);
+    }
+    for(int i=0;i<5;i++){
+        if(vet1[i]==vet2[i]){
+            verifiq=1;
+        }
+    }
+    if(verifiq==1){
+        printf("N\n");
+    }else{
+        printf("Y\n");
+    }
+    return 0;
+}

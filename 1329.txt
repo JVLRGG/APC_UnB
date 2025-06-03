@@ -1,0 +1,22 @@
+#include <stdio.h>
+ 
+int main() {
+    int n,x;
+    do{
+        int john=0,mary=0;
+        scanf("%d",&n);
+        for(int i=1;i<=n;i++){
+            scanf("%x",&x);
+            if(x==1){
+                john++;
+            }else{
+                mary++;
+            } 
+        }
+        if(n!=0){
+            printf("Mary won %d times and John won %d times\n",mary,john);
+        }
+        
+    }while(n!=0);
+    return 0;
+}

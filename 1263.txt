@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#define MAX 5001
+
+void identific(char frase[MAX]){
+    int t = strlen(frase),aux=0;// o t é para saber o tamanho do for e o aux é para saber a posição do char comp
+    char comp[101];// char comp usado para quardar a inicial de cada palavra.
+    for(int i=0;i<t;i++){
+        if(i==0 && frase[i+1]!=' '){// pergunta se é a primeira vez do for rodando e se é realmente uma palavra e não apenas uma letra
+            comp[aux]=frase[i];
+            aux++;
+        }else if(frase[i-1]==' ' && frase[i+1]!=' '){//pergunta se a letra a inicial de uma palavra e se é uma palavra
+            comp[aux]=frase[i];
+            aux++;
+        }
+    }
+    for(int i=0;i<aux;i++){
+        comp[i]=tolower(comp[i]);
+    }
+    int contador=0;
+    for(int i=0;i<aux;i++){
+        if(i==0 && comp[i]==comp[i+1]){
+            contador++;
+        }else if(comp[i]==comp[i+1] && comp[i]!=comp[i-1]){
+            contador++;
+        }
+    }
+    printf("%d\n",contador);
+}
+int main(){
+    char frase[MAX];
+    while(scanf("%[^\n]",frase)!=EOF){
+        getchar();
+        identific(frase);
+    }
+    return 0;
+}

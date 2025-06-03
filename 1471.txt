@@ -1,0 +1,36 @@
+#include <stdio.h>
+#define ben 100000
+void preenchimento(int vet[ben],int R){
+    for(int i=0;i<R;i++){
+        scanf("%d",&vet[i]);
+    }
+}
+void comaprador(int vet[ben],int R,int N){
+    
+    if(R==N){
+        printf("*\n");
+    }else{
+        
+        for(int i=1;i<=N;i++){
+            int aux=0;
+            for(int j=0;j<R;j++){
+                if(i==vet[j]){
+                    aux=1;
+                    break;
+                }
+            }
+            if(aux!=1){
+                printf("%d ",i);
+            }
+        }
+        printf("\n");
+    }
+    
+}
+int main(){
+    int N,R,vet[ben];
+    while(scanf("%d %d",&N,&R)!=EOF){ 
+        preenchimento(vet,R);
+        comaprador(vet,R,N);
+    }
+}

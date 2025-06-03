@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void preencher(int valor_ingredientes[],int I){ // função? preencher o vetor valor_ingredientes
+    for(int i=0;i<I;i++){
+        scanf("%d",&valor_ingredientes[i]);
+    }
+}
+int ordencao(const void*a,const void*b){//função? ordenar o vetor custo em ordem crescente
+    return (*(int *)a - *(int *)b);
+}
+
+int main(){
+    int N,D,I,B; 
+
+    scanf("%d",&N);
+    for(int i=0;i<N;i++){
+        
+        scanf("%d %d %d",&D,&I,&B);
+        int valor_ingredientes[I],custo[B];       
+        preencher(valor_ingredientes,I);
+        memset(custo,0,sizeof(custo));//função? preencher o vetor custo com 0
+        for(int j=0;j<B;j++){
+            
+            int Q,indice,quantidade;
+            scanf("%d",&Q);
+            
+            for(int k=0;k<Q;k++){
+                scanf("%d %d",&indice,&quantidade);
+                custo[j] += valor_ingredientes[indice] * quantidade;
+            }
+        }
+        qsort(custo,B,sizeof(int),ordencao);
+        printf("%d\n",D/custo[0]);
+
+    }
+    return 0;
+}

@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    int N;
+    scanf("%d", &N); // Número de casos de teste
+
+    while (N--) {
+        int Ax, Ay, Bx, By, Cx, Cy, Dx, Dy, RX, RY;
+        scanf("%d %d %d %d %d %d %d %d %d %d", 
+              &Ax, &Ay, &Bx, &By, &Cx, &Cy, &Dx, &Dy, &RX, &RY);
+
+        // Verificar se o robô está dentro ou na borda do retângulo
+        if (RX >= Ax && RY >= Ay && RX<=Bx && RY<=Cy) {
+            printf("1\n"); // Dentro
+        } else {
+            printf("0\n"); // Fora
+        }
+    }
+
+    return 0;
+}

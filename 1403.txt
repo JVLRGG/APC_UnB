@@ -1,0 +1,127 @@
+Programa do chat
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_PLAYERS 10000
+
+int main() {
+    int N, M;
+
+    while (1) {
+        // Ler N e M
+        scanf("%d %d", &N, &M);
+        if (N == 0 && M == 0) break;
+
+        int freq[MAX_PLAYERS] = {0}; // Array para contar aparições dos jogadores
+
+        // Ler os rankings e atualizar as frequências
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                int jogador;
+                scanf("%d", &jogador);
+                freq[jogador]++;
+            }
+        }
+
+        // Encontrar o maior e o segundo maior número de aparições
+        int maior = 0, segundo_maior = 0;
+        for (int i = 1; i < MAX_PLAYERS; i++) {
+            if (freq[i] > maior) {
+                segundo_maior = maior;
+                maior = freq[i];
+            } else if (freq[i] > segundo_maior && freq[i] < maior) {
+                segundo_maior = freq[i];
+            }
+        }
+
+        // Coletar todos os jogadores com a segunda maior frequência
+        for (int i = 1; i < MAX_PLAYERS; i++) {
+            if (freq[i] == segundo_maior) {
+                printf("%d ", i);
+            }
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+MEU PROGRAMA
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_F 10000
+#define MAX_P 250000
+int N,M,t[1];//a unica função do vetor t é pra saber quando colocar espaço entre os valores a serem printados
+int players[MAX_P];
+int freq[MAX_F]={0}; // Array para armazenar a frequência dos números
+int vetor[MAX_F];
+
+void zerar_vetores(int players[],int freq[],int vetor[]){
+    for(int i=0;i<MAX_F;i++){
+        freq[i]=0;
+        vetor[i]=0;
+    }
+    for(int i=0;i<MAX_P;i++){
+        players[i]=0;
+    }
+}
+
+void preenchimento_vetores(int freq[],int players[],int N,int M){
+    int x;
+    for(int i=0;i<(N*M);i++){
+        scanf("%d",&x);
+        freq[x]++; //frequencia de cada valor digitado
+        players[i]=x; // numero do jogador
+    }
+}
+
+
+void maior_frequencia(int freq[],int vetor[],int t[]){
+    int maior=0;
+    //primeiro for para achar a maior frequencia sendo direcionada ao velho
+    for(int i=0;i<MAX_F;i++){
+        if(freq[i]>0 && freq[i]>maior){
+            maior=freq[i];
+        }
+    }
+
+    //segundo for achar a segunda maior frequencia sendo direcionada ao segundo lugar
+    int maior2=0,aux=0;
+    t[0]=0;
+    
+    for(int i=0;i<MAX_F;i++){
+        if(freq[i]>0 && freq[i]>=maior2 && freq[i]!=maior){
+            maior2=freq[i];
+        }
+    }
+    for(int i=0;i<MAX_F;i++){
+        if(freq[i]==maior2){
+            vetor[aux]=i;
+            aux++;
+        }
+    }
+    t[0]=aux;
+
+}
+int main(){
+    do{
+        //zerar os vetores
+        zerar_vetores(players,freq,vetor);
+        scanf("%d %d",&N,&M);
+
+        if(N==0||M==0)break;//se digitar zero o programa para 
+
+        preenchimento_vetores(freq,players,N,M); //funcao para preencher o vetor de players e freq
+        maior_frequencia(freq,vetor,t); //descobrir quantos segundos existem 
+        
+        for (int i = 0; i < t[0]; i++) {
+            printf("%d", vetor[i]);
+            if (i != t[0] - 1) {
+                printf(" ");
+            }
+        }
+        printf("\n"); 
+         
+    }while(1);
+    return 0;
+}

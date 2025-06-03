@@ -1,0 +1,25 @@
+#include <stdio.h>
+int calculo(int n){
+    int maior=n;
+    while (n != 1) {
+        if (n % 2 == 0){
+            n = n / 2;
+        }else{
+            n = 3 * n + 1;
+        } 
+        if(maior<n)maior=n;        
+    }
+    return maior;
+} 
+int main(){
+    int H;
+    while(1){
+        scanf("%d",&H);
+        if(H==0){
+            break;
+        }
+        int maior = calculo(H);
+        printf("%d\n",maior);
+    }
+    
+}    

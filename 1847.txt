@@ -1,0 +1,43 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int x,y,z,aux1,aux2;
+    scanf("%d %d %d",&x,&y,&z);
+    if(x>y&&y<=z){
+        printf(":)\n");
+    }if(x<y&&y>=z){
+        printf(":(\n");
+    }if(x<y&&y<z){
+        aux1=y-x;
+        aux2=z-y;
+        if(aux1<0){
+            aux1*=(-1);
+        }if(aux2<0){
+            aux2*=(-1);
+        }if(aux2<aux1){
+            printf(":(\n");
+        }if(aux2>=aux1){
+            printf(":)\n");
+        }
+    }if(x>y&&y>z){
+        aux1=y-x;
+        aux2=z-y;
+        if(aux1<0){
+            aux1*=(-1);
+        }if(aux2<0){
+            aux2*=(-1);
+        }if(aux2<aux1){
+            printf(":)\n");
+        }if(aux2>=aux1){
+            printf(":(\n");
+        }
+    }if(x==y){
+        if(y<z){
+           printf(":)\n"); 
+        }else{
+            printf(":(\n");
+        }
+    }
+    return 0;
+}

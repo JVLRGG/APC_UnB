@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_N 10000
+#define MAX_CARACTERES 21
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    char str[MAX_N][MAX_CARACTERES];
+
+    for (int i = 0; i < N; i++) {
+        scanf("%s", str[i]);
+    }
+
+    for (int i = 0; i < N; i++) {
+        // Verifica se a palavra tem exatamente 3 letras
+        if (strlen(str[i]) == 3) {
+            // Verifica e corrige palavras "OBI" e "URI"
+            if (str[i][0] == 'O' && str[i][1] == 'B') {
+                str[i][2] = 'I';
+            } else if (str[i][0] == 'U' && str[i][1] == 'R') {
+                str[i][2] = 'I';
+            }
+        }
+    }
+
+    // Impressão corrigida com espaços entre as palavras
+    for (int i = 0; i < N; i++) {
+        printf("%s", str[i]);
+        if (i != N - 1) {
+            printf(" ");
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
