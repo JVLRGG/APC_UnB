@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    int N,num1,num2;
+    char letra;
+    scanf("%d",&N);
+    for(int i=0;i<N;i++){
+        scanf("%d %c %d",&num1,&letra,&num2);
+        int resultado;
+        if(num1==num2){
+            resultado=num1*num2;
+        }else if(isupper(letra)){//funcao isupper da biblioteca ctype, usado para saber se a letra é maiuscula
+            resultado=num2-num1;
+        }else{
+            resultado=num1+num2;
+        }
+        printf("%d\n",resultado);
+    }    
+    
+    return 0;
+}

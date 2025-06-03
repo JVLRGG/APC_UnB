@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
+#define MAX 10000
+int N,B;
+int diff[MAX]; // vetor para amarzenar a diferenca absoluta do vetor de numeros
+void preenchimento_vetor(int numeros[],int B){
+    for(int i=0;i<B;i++){
+        scanf("%d",&numeros[i]);
+    }
+} 
+
+int difernca_absoluta(int B, int numeros[],int diff[]){
+    int aux=0; //inteiro para variar a posição do vetor diff
+    for(int i=0;i<B;i++){
+        for(int j=i+1;j<B;j++){
+            if(i==B-1)break;
+            diff[aux]=abs(numeros[i]-numeros[j]);
+            aux++;
+        }
+    }
+    return aux;
+}
+
+int yes_no(int N,int diff[],int aux){
+    int contador=0;
+    for(int i=1;i<=N;i++){
+        for(int j=0;j<aux;j++){
+            if(diff[j]==i){
+                contador++;
+                break;
+            }
+        }
+    }
+    if(contador==N){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+int main(){
+    do{
+
+        scanf("%d %d",&N,&B);
+        if(N==0||B==0)break;
+        int numeros[B];
+        preenchimento_vetor(numeros,B);
+        int aux = difernca_absoluta(B,numeros,diff);
+        int yesno = yes_no(N,diff,aux);      
+        printf("%c\n",yesno==1?'Y':'N');
+    }while(1);
+    return 0;
+}

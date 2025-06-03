@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_G 100
+#define MAX_P 100
+#define MAX_S 10
+
+int resultados[MAX_G][MAX_P]; // Matriz de resultados dos Grandes Prêmios
+int pontos[MAX_P];           // Pontos acumulados por cada piloto
+
+void calcular_campeoes(int P, int G, int K, int *sistema_pontuacao) {
+    memset(pontos, 0, sizeof(pontos)); // Inicializa os pontos com 0
+
+    // Distribuição de pontos para cada corrida
+    for (int g = 0; g < G; g++) {
+        for (int p = 0; p < P; p++) {
+            int posicao = resultados[g][p]; // Posição do piloto na corrida
+            if (posicao <= K) {
+                pontos[p] += sistema_pontuacao[posicao - 1]; // Adiciona pontos
+            }
+        }
+    }
+
+    // Determina o(s) campeão(ões)
+    int max_pontos = 0;
+    for (int i = 0; i < P; i++) {
+        if (pontos[i] > max_pontos) {
+            max_pontos = pontos[i];
+        }
+    }
+
+    // Imprime os campeões em ordem crescente
+    int primeiro = 1;
+    for (int i = 0; i < P; i++) {
+        if (pontos[i] == max_pontos) {
+            if (!primeiro) {
+                printf(" ");
+            }
+            printf("%d", i + 1);
+            primeiro = 0;
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    while (1) {
+        int G, P; // Número de Grandes Prêmios e Pilotos
+        scanf("%d %d", &G, &P);
+        if (G == 0 && P == 0) break; // Condição de parada
+
+        // Leitura dos resultados dos Grandes Prêmios
+        for (int g = 0; g < G; g++) {
+            for (int p = 0; p < P; p++) {
+                scanf("%d", &resultados[g][p]);
+            }
+        }
+
+        int S; // Número de sistemas de pontuação
+        scanf("%d", &S);
+
+        for (int s = 0; s < S; s++) {
+            int K; // Última posição que recebe pontos
+            scanf("%d", &K);
+
+            int sistema_pontuacao[K];
+            for (int k = 0; k < K; k++) {
+                scanf("%d", &sistema_pontuacao[k]);
+            }
+
+            // Calcula e imprime os campeões para o sistema atual
+            calcular_campeoes(P, G, K, sistema_pontuacao);
+        }
+    }
+    return 0;
+}

@@ -1,0 +1,20 @@
+#include <stdio.h>
+ 
+int main() {
+    int x=1,n=1;
+    double valor,media;
+    do{
+        scanf("%lf",&valor);
+        if(valor>=0&&valor<=10){
+            media+=valor;
+            if(x==2){
+                n=0;
+            }
+            x++;
+        }else{
+            printf("nota invalida\n");
+        }
+    }while(n!=0);
+    printf("media = %.2lf\n",media/2.0);
+    return 0;
+}

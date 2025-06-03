@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+void preenchimento(double mat[12][12]) {
+    for (int i = 0; i < 12; i++) {
+        for (int j = 0; j < 12; j++) {
+            scanf("%lf", &mat[i][j]);
+        }
+    }
+}
+
+void calculo(double mat[12][12], char str) {
+    double soma = 0;
+    int x = 0, y = 11;  // y deve começar em 11, pois o índice máximo é 11
+    int count = 0;      // Contador para o número de elementos somados
+
+    for (int i = 0; i < 6; i++) {  // Apenas as primeiras 6 linhas
+        for (int j = x + 1; j < y; j++) {  // Colunas entre x+1 e y-1
+            soma += mat[i][j];
+            count++;
+        }
+        x++;
+        y--;
+    }
+
+    if (str == 'S') {
+        printf("%.1lf\n", soma);
+    } else {
+        double media = soma / count;
+        printf("%.1lf\n", media);
+    }
+}
+
+int main() {
+    double mat[12][12];
+    char str;
+    scanf("%c", &str);
+    preenchimento(mat);
+    calculo(mat, str);
+    return 0;
+}

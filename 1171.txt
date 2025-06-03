@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 2001 // Define o limite máximo para os valores possíveis (1 ≤ X ≤ 2000)
+
+int main() {
+    int N, x;
+    int freq[MAX] = {0}; // Array para armazenar a frequência dos números
+
+    // Lê a quantidade de números
+    scanf("%d", &N);
+
+    // Lê os números e atualiza a frequência
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &x);
+        freq[x]++; // Incrementa a frequência do número lido
+    }
+
+    // Imprime os números distintos em ordem crescente e suas frequências
+    for (int i = 1; i < MAX; i++) {
+        if (freq[i] > 0) {
+            printf("%d aparece %d vez(es)\n", i, freq[i]);
+        }
+    }
+
+    return 0;
+}

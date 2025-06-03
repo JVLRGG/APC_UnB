@@ -1,0 +1,30 @@
+#include <stdio.h>
+void preenchimento(double mat[12][12]){
+    for(int i=0;i<12;i++){
+        for(int j=0;j<12;j++){
+            scanf("%lf",&mat[i][j]);
+        }
+    }
+}
+void calculo(double mat[12][12],char str,int n){
+    double soma=0;
+    for(int i=0;i<12;i++){
+        soma+=mat[n][i];
+    }
+    if(str=='S'){
+        printf("%.1lf\n",soma);
+    }else{
+        soma/=12;
+        printf("%.1lf\n",soma);
+    }
+
+}
+int main(){
+    int n;
+    double mat[12][12];
+    char str;
+    scanf("%d %c",&n,&str);
+    preenchimento(mat);
+    calculo(mat,str,n);
+    return 0;
+}

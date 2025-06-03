@@ -1,0 +1,21 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int x,y,a=1;
+    scanf("%d%d",&x,&y);
+    do{
+        for (int i = 1; i <= x; i++){
+            printf("%d",a);
+            if(i!=x){
+                printf(" ");
+            }
+            if(i==x){
+                printf("\n");
+            }
+            a++;
+        } 
+              
+    }while(a!=y+1);
+    return 0;
+}

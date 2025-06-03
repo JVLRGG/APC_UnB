@@ -1,0 +1,18 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int x,alcool=0,gasosa=0,diesel=0;
+    do{
+        scanf("%d",&x);
+        if(x==1){
+            alcool++;
+        }else if(x==2){
+            gasosa++;
+        }else if(x==3){
+            diesel++;
+        }
+    }while(x!=4);
+    printf("MUITO OBRIGADO\nAlcool: %d\nGasolina: %d\nDiesel: %d\n",alcool,gasosa,diesel);
+    return 0;
+}
